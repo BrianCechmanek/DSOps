@@ -8,12 +8,36 @@ Presenters: Evengalia Kryoneriti, Brian Cechmanek
 
 Time: 10-12 minutes including questions
 
-# Outline
+# Why to (Unit) Test
+
+Skip this if you're familiar with they whys of (unit) testing. 
+
+Unit testing allows you to:
+
+* organise expectations (!) 
+* catch unexpected behaviour
+* catch expected behaviour 
+
+Organising expectations is setting out with a plan for what your function is meant to do. What are the inputs and outputs going to be? Will you accept variable input types? Should your output always be signed, within some range, or some particular data type? 
+
+Catching unexpected behaviour is the obvious goal of testing. Once you know what your function should do, you'll want it to avoid providing incorrect outputs. But it is absolutely pragmatic to check that incorrect outputs don't slip though (though, of course it is impracticable to think of and implement all possible edge cases). If you are parsing a standard +1 10-digit phone number, and it contains a letter, this should be captured. 
+
+Lastly, catching expected behaviour will hopefully follow. Does your method output what you organised ahead of time? If you are parsing a +1 10-digit phone number, do you output a `str`, or an `int`? 
+
+If the distinction between catching unexpected behaviour versus expected is unclear, consider your TP/FP/TN/FN situations. 
+
+For DS, ML, and AI, the only addition to this mental model is that you are now testing with ideas of probability, uncertainty, and often massive data inputs. 
 
 
-# Why to Test
+# When to Test (and TDD)
 
-# When to Test 
+In the planning of your development, testing can help set a roadmap. If you know where you want to end up (a fully passing test suite), you can work your way back through implementing each class/function. 
+
+In the running of your scripts/programs, testing can help you with be confident that things are executing accurately/correctly. 
+
+In updating your code, pre-existing tests can help ensure that no breaking changes occur. 
+
+This has lead to a popular process called [Test Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development).
 
 # Unittest
 
