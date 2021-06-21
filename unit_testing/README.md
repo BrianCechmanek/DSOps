@@ -88,29 +88,27 @@ This code logic is tested for by asserting that logic outputs as expected for on
 # if you call `pytest tests/pytests/test_basics.py you will get an import error
 /unit_testing/src/unittest/ $ python -m pytest tests/pytests/test_basics.py 
 ...
-======================================================================== test session starts ========================================================================
+============================================================================= test session starts ==============================================================================
 platform darwin -- Python 3.9.2, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
-rootdir: /Users/u6070354/Desktop/Brian/research/thesis/tutorials/unit_testing
-collected 2 items                                                                                                                                                   
+rootdir: /Users/u6070354/Desktop/Brian/research/thesis/DSOps/unit_testing
+collected 3 items                                                                                                                                                              
 
-tests/pytests/test_basics.py .F                                                                                                                               [100%]
+tests/pytests/test_fixtures.py .F.                                                                                                                                       [100%]
 
-============================================================================= FAILURES ==============================================================================
-__________________________________________________________________________ test_bad_adder ___________________________________________________________________________
+=================================================================================== FAILURES ===================================================================================
+________________________________________________________________________________ test_bad_adder ________________________________________________________________________________
 
-rel = 1e-06
+add_ints = (40, 2), add_floats = (0.1, 0.2), int_result = 42, float_result = 0.30000000000000004
 
-    def test_bad_adder(rel: float=1e-6):
-        x,y,app = 40, 2, 42
->       assert bad_adder(x, y) == approx(app, rel=rel)
-E       assert 43 == 42 ± 4.2e-05
-E        +  where 43 = bad_adder(40, 2)
-E        +  and   42 ± 4.2e-05 = approx(42, rel=1e-06)
+    def test_bad_adder(add_ints, add_floats, int_result, float_result):
+>       assert bad_adder(*add_ints) == int_result
+E       assert 43 == 42
+E        +  where 43 = bad_adder(*(40, 2))
 
-tests/pytests/test_basics.py:28: AssertionError
-====================================================================== short test summary info ======================================================================
-FAILED tests/pytests/test_basics.py::test_bad_adder - assert 43 == 42 ± 4.2e-05
-==================================================================== 1 failed, 1 passed in 0.14s ====================================================================
+tests/pytests/test_fixtures.py:51: AssertionError
+=========================================================================== short test summary info ============================================================================
+FAILED tests/pytests/test_fixtures.py::test_bad_adder - assert 43 == 42
+========================================================================= 1 failed, 2 passed in 0.11s ==========================================================================
 ```
 
 ## Fixtures 
@@ -124,5 +122,50 @@ Consider the four (Pytest) stages of a test:
 3. Assert: looking at the result of the state change
 4. Cleanup: ensure that other tests aren't influenced by this one
 
-Fixture primarily work on (1): arranging for a test. Test functions request fixtures by declaring them as arguments. 
+Fixture primarily work on (1): arranging for a test. Test functions request fixtures by declaring them as arguments. Consider a fixture a function that returns some data. Fixtures can:
+
+* Request other fixtures
+* Be reused in multiple tests
+* Can be requested more than once per test
+
+Readdressing testing the adders in `src/basics.py`, how would it make sense to pass in many values, and to test for various situations? Consider to test both floats and ints:
+
+```python
+def test_good_adder():
+    x, y = 40, 2
+    z, w = 0.1, 0.3
+    assert good_adder(x,y) == 42
+    assert good_adder(z,w) == 0.3
+
+def test_badadder():
+    x, y = 40, 2
+    z, w = 0.1, 0.3
+    assert bad_adder(x,y) == 42
+    assert bad_adder(z,w) == 0.3
+```
+
+In standard DYR style, it would be nice to move these variables outside of the individual tests. Which can be done by defining a fixture:
+
+```python
+@pytest.fixture
+def add_ints():
+    return (40, 2)
+...
+```
+
+Each fixture is then _requested_ by the test method:
+
+```python
+def test_good_adder(add_ints, ...):
+    ...
+```
+
+# Conclusion 
+
+This just brushes the surface of testing, but for many logic/implementation situations, will likely help you cover your bases. The next step would be for more complicated setups, when you may wish to pass a class around.
+
+
+
+
+
 

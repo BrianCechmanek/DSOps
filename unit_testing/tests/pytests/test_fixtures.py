@@ -36,6 +36,8 @@ def int_result():
 
 @pytest.fixture
 def float_result():
+    # let's make an example of why to check within epsilon
+    # try 0.30000000000000009 . or 3.0
     return 0.30000000000000004
 
 
@@ -49,3 +51,16 @@ def test_bad_adder(add_ints, add_floats, int_result, float_result):
     assert bad_adder(*add_ints) == int_result
     assert bad_adder(*add_floats) == float_result
     logging.info("bad adder passed fixtures")
+
+
+### How does this extend to a LOT of checks?
+
+
+@pytest.fixture
+def add_many_ints():
+    return zip(range(10), range(10)[::-1])
+
+
+def test_good_adder_alot(add_many_ints):
+    for x, y in add_many_ints:
+        assert good_adder(x, y) == x + y
