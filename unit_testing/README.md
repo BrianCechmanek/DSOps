@@ -4,7 +4,7 @@ Tutorial on Pytest for ML Research.
 
 Presented for [NeuroCog Computing Lab](https://cs.uwaterloo.ca/~jorchard/uw/NeuroCog.html), 23 June 2021 
 
-Presenters: Evengalia Kryoneriti, Brian Cechmanek
+Presenters: Evengelia Kryoneriti, Brian Cechmanek
 
 Time: 10-12 minutes including questions
 
