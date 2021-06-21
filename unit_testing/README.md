@@ -39,6 +39,8 @@ In updating your code, pre-existing tests can help ensure that no breaking chang
 
 This has lead to a popular process called [Test Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development).
 
+Discussion: how much of your code should have unit tests? 
+
 # Unittest
 
 Unittest is python's [built-in tesing library](https://docs.python.org/3/library/unittest.html#module-unittest). I do not know of any scale usage of unittest, over pytest (below). That said, it does have a couple noteable pros: 
