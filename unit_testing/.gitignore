@@ -1,0 +1,13 @@
+
+# mac stuff
+*.DS_Store
+
+# python stuff
+*.pytest_cache
+__pycache__
+
+# geckodriver
+geckodriver.log
+
+# logs
+*.log
