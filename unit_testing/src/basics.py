@@ -10,21 +10,21 @@ logger.setLevel(logging.DEBUG)
 
 handler = logging.StreamHandler(sys.stdout)
 handler.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
-def good_adder(a: float, b:float):
-    #logging.info("running my good adder")
+def good_adder(a: float, b: float):
+    # logging.info("running my good adder")
     return a + b
 
 
 def bad_adder(a: float, b: float):
     # this adder method will probably never fail
     # but will definitely produce unexpected results
-    #logging.info("running my bad adder")
+    # logging.info("running my bad adder")
     return a + b + 1
 
 

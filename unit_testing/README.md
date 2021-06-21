@@ -2,10 +2,11 @@
 
 Tutorial on Pytest for ML Research. 
 
-Presented for [NeuroCog Computing Lab](https://cs.uwaterloo.ca/~jorchard/uw/NeuroCog.html), 23 June 2021. 
+Presented for [NeuroCog Computing Lab](https://cs.uwaterloo.ca/~jorchard/uw/NeuroCog.html), 23 June 2021 
 
 Presenters: Evengalia Kryoneriti, Brian Cechmanek
 
+Time: 10-12 minutes including questions
 
 # Outline
 
@@ -32,7 +33,7 @@ Here a "good" adder method and a "bad" adder method are created. Both will run a
 adding 40 and 2
 2021-06-20 13:39:16,303 - root - INFO - running my good adder
 good adder: 42
-good adder: 43
+bad adder: 43
 2021-06-20 13:39:16,303 - root - INFO - completed basics
 ```
 
@@ -76,7 +77,7 @@ Here a "good" adder method and a "bad" adder method are created. Both will run a
 adding 40 and 2
 2021-06-20 13:39:16,303 - root - INFO - running my good adder
 good adder: 42
-good adder: 43
+bad adder: 43
 2021-06-20 13:39:16,303 - root - INFO - completed basics
 ```
 
@@ -114,5 +115,14 @@ FAILED tests/pytests/test_basics.py::test_bad_adder - assert 43 == 42 ± 4.2e-05
 
 ## Fixtures 
 
-The real power of pytest. 
+The real power of pytest (not to suggest unittest doesn't have, see [setup](https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp)).
+
+Consider the four (Pytest) stages of a test:
+
+1. Arrange: preparation for the test 
+2. Act: singular change of state, the event to test
+3. Assert: looking at the result of the state change
+4. Cleanup: ensure that other tests aren't influenced by this one
+
+Fixture primarily work on (1): arranging for a test. Test functions request fixtures by declaring them as arguments. 
 
