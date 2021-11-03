@@ -4,3 +4,6 @@
 
 # Annoying Mac stuff
 .DS_Store
+
+# Python
+__pycache__
