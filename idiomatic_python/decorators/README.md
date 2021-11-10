@@ -13,7 +13,9 @@ Definition: a [higher-order function](https://en.wikipedia.org/wiki/Higher-order
 * Flask/Fast API
 * numba/jit
 * Python: `@classmethod`, `@staticmethod`, `@property`, `@dataclass`
+* `@functools.wrap`, `@debug` -> https://realpython.com/primer-on-python-decorators/
 * \<ADD MORE\>
+* chaining decorators (sure, why not)
 
 # Decorator Usage
 
