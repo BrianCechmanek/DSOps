@@ -8,6 +8,12 @@ Definition: a [higher-order function](https://en.wikipedia.org/wiki/Higher-order
 * Functions can return functions
 * funcftions can accept functions as arguments
 
+# Common Encounters
+
+* Flask/Fast API
+* numba/jit
+* Python: `@classmethod`, `@staticmethod`, `@property`, `@dataclass`
+* \<ADD MORE\>
 
 # Decorator Usage
 
@@ -25,3 +31,9 @@ def g(i):
 ```
 
 Care needs to be taken that **all** calls to `g()` will now invoke it `@twice`. This may be desired. or may not. Do you want to permanently change a method (see: flask/fast API).
+
+
+
+# Decorator method signatures
+
+* what happens when you want to debug, or there is an argument error? 
